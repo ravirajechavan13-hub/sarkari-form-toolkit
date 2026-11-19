@@ -1,0 +1,50 @@
+.download-button {
+  background: #37644f;
+  border-color: #37644f;
+}
+
+.download-button:hover:not(:disabled) {
+  background: #2c5542;
+}
+
+@media (pointer: coarse), (max-width: 640px) {
+  .switch,
+  .privacy-button {
+    position: relative;
+  }
+
+  .switch::before,
+  .privacy-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    transform: translateY(-50%);
+  }
+
+  .option-button,
+  .secondary-button,
+  .mobile-menu-toggle,
+  .compare-tabs button {
+    min-height: 44px;
+  }
+
+  .custom-fields input,
+  .date-fields input,
+  .age-range-fields input {
+    min-height: 46px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .date-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .date-fields label {
+    font-size: 12px;
+  }
+}
