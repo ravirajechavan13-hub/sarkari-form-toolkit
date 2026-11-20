@@ -15,7 +15,7 @@ export function canvasBlob(
   )
 }
 
-async function loadImage(file: File): Promise<HTMLImageElement> {
+export async function loadImage(file: File): Promise<HTMLImageElement> {
   const url = URL.createObjectURL(file)
   const image = new Image()
   try {

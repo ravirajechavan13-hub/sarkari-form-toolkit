@@ -42,6 +42,22 @@ export const tools: ToolInfo[] = [
     label: 'Calculate age',
     intro: 'Find your exact age on the notification cut-off date and check the age requirement.',
   },
+  {
+    id: 'jpg-to-pdf',
+    number: '05',
+    name: 'JPG to PDF',
+    description: 'Bring your photos together in one PDF, in the order you choose.',
+    label: 'Combine photos',
+    intro: 'Add your photos, arrange the pages, and save them as one application-ready PDF.',
+  },
+  {
+    id: 'pdf-to-jpg',
+    number: '06',
+    name: 'PDF to JPG',
+    description: 'Save every PDF page, or just the ones you need, as JPG images.',
+    label: 'Extract images',
+    intro: 'Turn PDF pages into clear images. Download a single JPG or all your pages together.',
+  },
 ]
 
 export const presets = [

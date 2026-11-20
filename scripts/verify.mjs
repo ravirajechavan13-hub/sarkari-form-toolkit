@@ -44,7 +44,7 @@ try {
   await navigate('home')
   await page.evaluate(() => document.fonts.ready)
   await page.waitForTimeout(750)
-  assert.equal(await page.locator('.tool-card').count(), 4)
+  assert.equal(await page.locator('.tool-card').count(), 6)
   assert.equal(
     requests.some((url) => url.includes('/vendor/')),
     false,
@@ -129,13 +129,11 @@ try {
   await page.getByRole('alert').waitFor()
   assert.match(await page.getByRole('alert').innerText(), /maximum file size/)
   await page.getByRole('button', { name: 'Remove file' }).click()
-  await page
-    .locator('input[type=file]')
-    .setInputFiles({
-      name: 'wrong.txt',
-      mimeType: 'text/plain',
-      buffer: Buffer.from('not an image'),
-    })
+  await page.locator('input[type=file]').setInputFiles({
+    name: 'wrong.txt',
+    mimeType: 'text/plain',
+    buffer: Buffer.from('not an image'),
+  })
   assert.match(await page.getByRole('alert').innerText(), /JPG, PNG, or WebP/)
   console.log(
     'PASS: five exam presets, JPG downloads, exact dimensions, 300 DPI, KB ranges, custom settings, invalid files',
@@ -220,13 +218,11 @@ try {
     'already-small.pdf',
   )
   assert.deepEqual(unchanged, smallPdf)
-  await page
-    .locator('input[type=file]')
-    .setInputFiles({
-      name: 'bad.pdf',
-      mimeType: 'application/pdf',
-      buffer: Buffer.from('not a PDF document'),
-    })
+  await page.locator('input[type=file]').setInputFiles({
+    name: 'bad.pdf',
+    mimeType: 'application/pdf',
+    buffer: Buffer.from('not a PDF document'),
+  })
   await page.getByRole('button', { name: 'Compress PDF', exact: true }).click()
   await page.getByRole('alert').waitFor()
   assert.match(await page.getByRole('alert').innerText(), /could not be opened/)
@@ -234,7 +230,15 @@ try {
 
   for (const width of [320, 390, 640, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 844 })
-    for (const route of ['home', 'tool/resizer', 'tool/compressor', 'tool/scanner', 'tool/age']) {
+    for (const route of [
+      'home',
+      'tool/resizer',
+      'tool/compressor',
+      'tool/scanner',
+      'tool/age',
+      'tool/jpg-to-pdf',
+      'tool/pdf-to-jpg',
+    ]) {
       await navigate(route)
       assert.ok(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -260,7 +264,7 @@ try {
   assert.deepEqual(remote, [], 'No third-party requests should be made')
   assert.deepEqual(errors, [], 'No uncaught browser errors')
   console.log(
-    'PASS: all five pages at six widths, mobile navigation, zero third-party requests, zero uploads, zero browser errors',
+    'PASS: all seven pages at six widths, mobile navigation, zero third-party requests, zero uploads, zero browser errors',
   )
 } catch (error) {
   console.error('Visible errors:', await page.getByRole('alert').allTextContents())

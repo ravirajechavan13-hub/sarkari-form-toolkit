@@ -330,7 +330,7 @@ export function HeroArtwork() {
   )
 }
 
-export type ToolId = 'resizer' | 'compressor' | 'scanner' | 'age'
+export type ToolId = 'resizer' | 'compressor' | 'scanner' | 'age' | 'jpg-to-pdf' | 'pdf-to-jpg'
 
 export function ToolArtwork({ tool }: { tool: ToolId }) {
   const id = useId().replace(/:/g, '')
@@ -343,6 +343,71 @@ export function ToolArtwork({ tool }: { tool: ToolId }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
+      {(tool === 'jpg-to-pdf' || tool === 'pdf-to-jpg') && (
+        <g>
+          <g transform={tool === 'jpg-to-pdf' ? 'translate(0 0)' : 'translate(47 -1)'}>
+            <g transform="rotate(-13 76 62)">
+              <rect
+                x="37"
+                y="28"
+                width="66"
+                height="69"
+                rx="3"
+                fill="#BDCFCD"
+                stroke="#597F7E"
+                strokeWidth="1.5"
+              />
+              <rect
+                x="43"
+                y="20"
+                width="66"
+                height="69"
+                rx="3"
+                fill="#FFFEF9"
+                stroke="#416A70"
+                strokeWidth="1.7"
+              />
+              <path d="M49 27h54v42H49z" fill="#D6E8E9" stroke="#73989D" />
+              <circle cx="89" cy="38" r="5" fill="#E9BC8D" />
+              <path d="m49 61 18-18 14 14 8-9 14 15v6H49z" fill="#8EAEA4" />
+              <path d="m49 65 16-13 15 8 12-7 11 9v7H49z" fill="#5F8785" />
+              <path d="M51 78h30m6 0h12" stroke="#A6B9B9" strokeWidth="2" />
+            </g>
+          </g>
+          <g
+            transform={
+              tool === 'jpg-to-pdf' ? 'rotate(7 125 65)' : 'translate(-64 -11) rotate(-7 125 65)'
+            }
+          >
+            <path d="M103 34h35l13 13v53h-48z" fill="#FFFCF5" stroke="#886D57" strokeWidth="1.7" />
+            <path d="m138 34 1 14 12-1z" fill="#E8D6C5" stroke="#886D57" strokeWidth="1.4" />
+            <rect
+              x="97"
+              y="54"
+              width="35"
+              height="18"
+              rx="2"
+              fill="#DD9374"
+              stroke="#9F7057"
+              strokeWidth="1.3"
+            />
+            <text
+              x="114.5"
+              y="67"
+              fill="white"
+              fontFamily="Arial, sans-serif"
+              fontSize="11"
+              fontWeight="bold"
+              textAnchor="middle"
+            >
+              PDF
+            </text>
+            <path d="M111 80h29m-29 6h23m-23 6h15" stroke="#BDAB9B" strokeWidth="2" />
+          </g>
+          <path d="M105 21c13-8 29-4 35 7m-8-3 8 4 1-9" stroke="#708991" strokeWidth="1.7" />
+          <path d="M29 58h7m-3.5-3.5v7m119 14h7m-3.5-3.5v7" stroke="#A5B8B6" strokeWidth="1.3" />
+        </g>
+      )}
       {tool === 'resizer' && (
         <g>
           <g transform="rotate(8 95 61)">
