@@ -5,6 +5,7 @@ import { PhotoResizer } from './PhotoResizer'
 import { PdfCompressor } from './PdfCompressor'
 import { DocumentScanner } from './DocumentScanner'
 import { AgeCalculator } from './AgeCalculator'
+import { JpgToPdf, PdfToJpg } from './FileConverters'
 import './workbench.css'
 import './touch.css'
 
@@ -35,6 +36,10 @@ export function Workbench({ tool }: { tool: ToolInfo }) {
           <PdfCompressor />
         ) : tool.id === 'scanner' ? (
           <DocumentScanner />
+        ) : tool.id === 'jpg-to-pdf' ? (
+          <JpgToPdf />
+        ) : tool.id === 'pdf-to-jpg' ? (
+          <PdfToJpg />
         ) : (
           <AgeCalculator />
         )}

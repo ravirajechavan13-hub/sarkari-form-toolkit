@@ -7,6 +7,8 @@ import {
   Check,
   ChevronDown,
   FileDown,
+  FileImage,
+  Files,
   Image,
   LayoutGrid,
   LockKeyhole,
@@ -19,8 +21,17 @@ import {
 } from 'lucide-react'
 import { BrandMark, HeroArtwork, ToolArtwork, type ToolId } from './Artwork'
 import { tools } from '../data'
+import { ApplicationGuide } from './ApplicationGuide'
+import './additions.css'
 
-const toolIcons = { resizer: Image, compressor: FileDown, scanner: ScanLine, age: CalendarDays }
+const toolIcons = {
+  resizer: Image,
+  compressor: FileDown,
+  scanner: ScanLine,
+  age: CalendarDays,
+  'jpg-to-pdf': Files,
+  'pdf-to-jpg': FileImage,
+}
 export type InfoPage = 'privacy' | 'guide' | null
 
 export function Brand({ small = false }: { small?: boolean }) {
@@ -228,10 +239,11 @@ export function Home({ onInfo }: { onInfo: (page: InfoPage) => void }) {
               THE TOOLBOX
             </div>
             <h2 id="toolbox-title">Choose your tool</h2>
-            <p>Four handy tools to get your application ready.</p>
+            <p>Six handy tools to get your application ready.</p>
           </div>
           <span className="tool-count">
-            <LayoutGrid size={14} />4 tools
+            <LayoutGrid size={14} />
+            {tools.length} tools
           </span>
         </div>
         <div className="tool-grid">
@@ -272,6 +284,7 @@ export function Home({ onInfo }: { onInfo: (page: InfoPage) => void }) {
           </button>
         </div>
       </section>
+      <ApplicationGuide />
     </main>
   )
 }
@@ -381,7 +394,7 @@ export function InfoDialog({
             </span>
             <div>
               <strong>01. Choose a tool</strong>
-              <p>Open the resizer, compressor, scanner, or age calculator.</p>
+              <p>Resize, scan, compress, convert documents, or check your age eligibility.</p>
             </div>
           </li>
           <li>
