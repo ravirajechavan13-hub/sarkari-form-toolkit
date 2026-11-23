@@ -46,7 +46,7 @@ function GuideRow({
             <Icon size={21} strokeWidth={1.55} />
           </span>
           <span className="guide-name">
-            <small>{guide.category === 'Vacancy' ? 'RECRUITMENT GUIDE' : 'SCHEME GUIDE'}</small>
+            <small>{guide.category === 'Yojana' ? 'RECRUITMENT GUIDE' : 'SCHEME GUIDE'}</small>
             <strong>{guide.title}</strong>
           </span>
           <span className="guide-toggle-caption">{open ? 'Close guide' : 'Read guide'}</span>
@@ -136,13 +136,13 @@ export function ApplicationGuide() {
             <span className="eyebrow-line" />
             THE FORM GUIDE
           </div>
-          <h2 id="application-guides-title">Sarkari Yojana &amp; Vacancy Guide</h2>
+          <h2 id="application-guides-title">Sarkari Yojana &amp; Official Portals Guide</h2>
           <p>Kaunsa document, kaunsa rule, aur kahan apply karein. Aasaan bhasha mein.</p>
         </div>
         <BookOpen className="guide-heading-icon" size={24} strokeWidth={1.4} />
       </div>
       <div className="guide-filters" role="group" aria-label="Guide category">
-        {(['All', 'Yojana', 'Vacancy'] as const).map((item) => (
+        {(['All', 'Yojana', ] as const).map((item) => (
           <button
             key={item}
             aria-pressed={filter === item}
