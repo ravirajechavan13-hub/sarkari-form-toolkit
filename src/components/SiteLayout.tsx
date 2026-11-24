@@ -38,7 +38,7 @@ export function Brand({ small = false }: { small?: boolean }) {
   return (
     <a
       className={`brand ${small ? 'brand-small' : ''}`}
-      href="#home"
+      href="/"
       aria-label="Sarkari Form ToolKit home"
     >
       <BrandMark small={small} />
@@ -77,11 +77,11 @@ export function Header({
     }
     document.addEventListener('pointerdown', outside)
     document.addEventListener('keydown', escape)
-    window.addEventListener('hashchange', close)
+    window.addEventListener("popstate", close)
     return () => {
       document.removeEventListener('pointerdown', outside)
       document.removeEventListener('keydown', escape)
-      window.removeEventListener('hashchange', close)
+      window.removeEventListener("popstate", close)
     }
   }, [])
   const showInfo = (page: InfoPage) => {
@@ -94,7 +94,7 @@ export function Header({
         <Brand />
         <nav className="desktop-nav" aria-label="Main navigation">
           <a
-            href="#home"
+            href="/"
             className={`nav-link ${!active ? 'active' : ''}`}
             aria-current={!active ? 'page' : undefined}
           >
@@ -118,7 +118,7 @@ export function Header({
                   return (
                     <a
                       key={tool.id}
-                      href={`#tool/${tool.id}`}
+                      href={`/tool/${tool.id}`}
                       className={`dropdown-tool theme-${tool.id}`}
                       onClick={close}
                     >
@@ -155,14 +155,14 @@ export function Header({
       </div>
       {mobileOpen && (
         <nav id="mobile-navigation" className="mobile-navigation" aria-label="Mobile navigation">
-          <a href="#home" onClick={close}>
+          <a href="/" onClick={close}>
             <LayoutGrid size={17} />
             Home
           </a>
           {tools.map((tool) => {
             const Icon = toolIcons[tool.id]
             return (
-              <a key={tool.id} href={`#tool/${tool.id}`} onClick={close}>
+              <a key={tool.id} href={`/tool/${tool.id}`} onClick={close}>
                 <Icon size={17} />
                 {tool.name}
               </a>
@@ -214,7 +214,7 @@ export function Home({ onInfo }: { onInfo: (page: InfoPage) => void }) {
             </p>
             <a
               className="primary-button hero-cta"
-              href="#tools"
+              href="/tools"
               onClick={() =>
                 document
                   .getElementById('tools')
@@ -251,7 +251,7 @@ export function Home({ onInfo }: { onInfo: (page: InfoPage) => void }) {
             <a
               key={tool.id}
               className={`tool-card theme-${tool.id}`}
-              href={`#tool/${tool.id}`}
+              href={`/tool/${tool.id}`}
               style={{ animationDelay: `${index * 65}ms` }}
               aria-label={`Open ${tool.name}`}
             >
@@ -432,7 +432,7 @@ export function InfoDialog({
         onClick={() => {
           onClose()
           if (!privacy) {
-            window.location.hash = 'tools'
+            window.history.pushState(null, "", "/tools"); window.dispatchEvent(new PopStateEvent("popstate"))
             document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
           }
         }}

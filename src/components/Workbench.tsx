@@ -16,7 +16,7 @@ export function Workbench({ tool }: { tool: ToolInfo }) {
         <div className="page-width work-banner-inner">
           <div>
             <div className="breadcrumb">
-              <a href="#tools">
+              <a href="/tools">
                 <ArrowLeft size={13} />
                 All tools
               </a>
@@ -44,7 +44,7 @@ export function Workbench({ tool }: { tool: ToolInfo }) {
           <AgeCalculator />
         )}
         <div className="work-bottom">
-          <a className="back-link" href="#tools">
+          <a className="back-link" href="/tools">
             <ArrowLeft size={14} />
             Back to all tools
           </a>
@@ -59,7 +59,7 @@ export function Workbench({ tool }: { tool: ToolInfo }) {
             {tools
               .filter((other) => other.id !== tool.id)
               .map((other) => (
-                <a href={`#tool/${other.id}`} className={`theme-${other.id}`} key={other.id}>
+                <a href={`/tool/${other.id}`} className={`theme-${other.id}`} key={other.id}>
                   <span className="other-tool-number">{other.number}</span>
                   {other.name}
                   <ArrowRight size={15} />
