@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Indian Flag">
+  <rect width="64" height="64" rx="14" fill="#F8FAFC"/>
+  <rect x="10" y="14" width="44" height="12" fill="#FF9933"/>
+  <rect x="10" y="26" width="44" height="12" fill="#FFFFFF"/>
+  <rect x="10" y="38" width="44" height="12" fill="#138808"/>
+  <rect x="10" y="14" width="44" height="36" rx="2" fill="none" stroke="#CBD5E1" stroke-width="1"/>
+  <circle cx="32" cy="32" r="4.5" fill="none" stroke="#000080" stroke-width="1.2"/>
+  <circle cx="32" cy="32" r="1" fill="#000080"/>
+</svg>

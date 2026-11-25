@@ -50,9 +50,11 @@ export function applySeo({ title, description, path, schema }: SeoPayload) {
   upsertMeta('property', 'og:title', title);
   upsertMeta('property', 'og:description', description);
   upsertMeta('property', 'og:url', canonicalUrl);
+  upsertMeta('property', 'og:image', `${BASE_URL}/india-flag-logo.svg`);
   upsertMeta('name', 'twitter:card', 'summary_large_image');
   upsertMeta('name', 'twitter:title', title);
   upsertMeta('name', 'twitter:description', description);
+  upsertMeta('name', 'twitter:image', `${BASE_URL}/india-flag-logo.svg`);
   upsertCanonical(canonicalUrl);
 
   upsertJsonLd(
@@ -61,6 +63,7 @@ export function applySeo({ title, description, path, schema }: SeoPayload) {
       '@type': 'WebApplication',
       name: 'Sarkari Form ToolKit',
       url: BASE_URL,
+        image: `${BASE_URL}/india-flag-logo.svg`,
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
